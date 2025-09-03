@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
+@Data
 @Entity
 @Table(name = "brands")
 @Getter
