@@ -13,19 +13,19 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private static final String SECRET = "your-256-bit-secret-your-256-bit-secret";
+    private static final String SECRET = "sjmnhsbxhh734daljscscswsd367hhsAA";
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
-    public String generateToken(String username) {
+    public String generateToken(String phone) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(phone)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15)) // 15 phút
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String extractUsername(String token) {
+    public String extractPhone(String token) {
         return Jwts.parserBuilder().setSigningKey(key).build()
                 .parseClaimsJws(token).getBody().getSubject();
     }

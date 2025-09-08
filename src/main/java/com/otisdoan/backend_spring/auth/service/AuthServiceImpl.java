@@ -20,7 +20,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional
     public Optional<User> login(AuthLogin authLogin) {
-        if (authRepository.existByPhone(authLogin.phone())) {
+        if (authRepository.existsByPhone(authLogin.phone())) {
             throw new IllegalArgumentException("Phone is exists!");
         }
         return authRepository.findByPhone(authLogin.phone());
